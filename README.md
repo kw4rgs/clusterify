@@ -1,25 +1,21 @@
+
 ![Clusterify_Logo](https://github.com/cristianzzzz/clusterify/blob/adc0167c2edc95ee3427b3b6ffa8a38930afb23f/logo.png)
 
 
 # CLUSTERIFY
 
-Clusterify: Uncover data patterns and relationships through clustering methods.
+*"Uncover data patterns and relationships through clustering methods."*
 
 Introducing Clusterify: A FastAPI App with K-means, Nearest Neighbor, and More!
 
 Clusterify is a powerful FastAPI application that combines the strengths of K-means, Nearest Neighbor, Pandas, Numpy, and Python to supercharge your data clustering endeavors. By effortlessly processing your data points, Clusterify intelligently organizes and clusters them, meeting your specific needs with precision and speed.
-
 With its user-friendly interface, Clusterify makes data clustering a breeze. Simply input your data, and let the magic happen. Whether you're dealing with massive datasets or real-time streams, Clusterify's robust architecture ensures optimal performance even under demanding scenarios.
-
 Clusterify's secret weapon is the advanced K-means algorithm, which partitions your data into cohesive groups, revealing valuable patterns and similarities. Supported by Pandas and Numpy, Clusterify handles complex datasets effortlessly, providing you with insights to make informed decisions.
-
 In addition, Clusterify incorporates the Nearest Neighbor technique to identify the closest matches for each data point within the clusters. This enables you to uncover hidden relationships and associations, empowering you to explore your data landscape like never before.
-
 With the flexibility and extensibility of Python, Clusterify seamlessly integrates into your existing workflows. Whether you're an experienced data scientist or a coding enthusiast, Clusterify's clean codebase allows for easy customization and adaptation to suit your unique requirements.
-
 Experience the future of data clustering with Clusterify. Unlock hidden potential, streamline decision-making, and gain a competitive edge in the ever-evolving field of data analysis. With Clusterify, your data becomes a gateway to deeper insights, revolutionizing the way you understand and leverage your information.
 
-## Features
+## Features 💪
 
 -   Efficiently cluster and organize data points for improved data analysis and decision-making.
 -   Utilize K-means algorithm to partition data into cohesive groups and identify patterns and similarities within the dataset.
@@ -32,9 +28,9 @@ Experience the future of data clustering with Clusterify. Unlock hidden potentia
 -   Revolutionize the way data is analyzed and understood, transforming it into a powerful tool for gaining a competitive edge.
 -   Redefine the boundaries of what's possible in data clustering, pushing the limits of technology to unleash the full potential of your data.
 
-## Requirements
+## Requirements 📝
 
-Hardware Requirements:
+**Hardware Requirements:**
 
 A computer or server with sufficient processing power and memory to handle the size and complexity of your dataset. The exact requirements may vary depending on the scale of your data.
 Software Requirements:
@@ -47,7 +43,7 @@ Software Requirements:
 
 Any additional libraries or packages required for your specific data preprocessing, visualization, or analysis needs.
 
-Data Requirements:
+**Data Requirements:**
 
 -   Prepare your data in a compatible format (e.g., CSV, JSON, or other structured formats) suitable for input into Clusterify.
 -   Ensure the data points are appropriately formatted, with features or attributes that capture the relevant information for clustering.
@@ -55,51 +51,118 @@ Data Requirements:
 
 Additionally, if you plan to deploy Clusterify on a server or in a production environment, you may need to consider additional requirements such as hosting infrastructure, security measures, and scalability considerations.
 
-## Instructions
+## Instructions 🚀
 
-I will use "ubuntu" for practical purposes..
+> I will use "ubuntu" for practical purposes..
 
-TO DEPLOY AND INSTALL: 
 
-1) sudo update
-2) sudo upgrade
-3) sudo apt install python3-venv
-4) cd /opt
-5) git glone https://github.com/cristianzzzz/clusterify.git
-6) cd /opt/clusterify
-7) python3 -m venv env
-8) source env/bin/activate
-9) sudo apt-get install build-essential (cause K-means-constrained need it)
-10) sudo apt-get install python3-dev (cause K-means-constrained need it)
-11) pip install -r requirements.txt
-12) test it with "uvicorn clusterify:app --host 0.0.0.0 --port 8000 --workers 4"
+To deploy and install your project, you can follow these instructions:
 
-tip: to deactivate the env, just type "deactivate"
+1. Update your system:
+   ```
+   sudo apt update
+   ```
 
-TO MAKE IT RECURSIVE:
-1) sudo nano /etc/systemd/system/clusterify.service
-2) paste this:
+2. Upgrade installed packages:
+   ```
+   sudo apt upgrade
+   ```
 
-[Unit]
-Description=clusterify
-After=network.target
+3. Install Python 3 virtual environment package:
+   ```
+   sudo apt install python3-venv
+   ```
 
-[Service]
-User=root
-WorkingDirectory=/opt/clusterify
-ExecStart=/opt/clusterify/env/bin/uvicorn clusterify:app --host 0.0.0.0 --port 8000 --workers 4 --access-log
-Restart=always
+4. Navigate to the `/opt` directory:
+   ```
+   cd /opt
+   ```
 
-[Install]
-WantedBy=multi-user.target
+5. Clone the project repository from GitHub:
+   ```
+   git clone https://github.com/cristianzzzz/clusterify.git
+   ```
 
-3) sudo systemctl daemon-reload
-4) sudo systemctl start clusterify
-5) sudo systemctl status clusterify
-6) sudo systemctl enable clusterify
-7) sudo journalctl -u clusterify.service
+6. Change to the project directory:
+   ```
+   cd /opt/clusterify
+   ```
 
-## Information
+7. Create a Python virtual environment:
+   ```
+   python3 -m venv env
+   ```
+
+8. Activate the virtual environment:
+   ```
+   source env/bin/activate
+   ```
+
+9. Install the required build essentials (for K-means-constrained):
+   ```
+   sudo apt-get install build-essential
+   ```
+
+10. Install Python development headers (for K-means-constrained):
+    ```
+    sudo apt-get install python3-dev
+    ```
+
+11. Install the project dependencies using the requirements.txt file:
+    ```
+    pip install -r requirements.txt
+    ```
+
+12. Test the project by running it with Uvicorn:
+    ```
+    uvicorn clusterify:app --host 0.0.0.0 --port 8000 --workers 4
+    ```
+
+    Make sure to replace `clusterify:app` with the correct module and application object if needed.
+
+Tip: To deactivate the virtual environment, simply type `deactivate` in the terminal.
+
+To make the deployment process recursive, follow these additional steps:
+
+1. Open the systemd service configuration file in a text editor:
+   ```
+   sudo nano /etc/systemd/system/clusterify.service
+   ```
+
+2. Paste the following content into the file:
+   ```
+   [Unit]
+   Description=Clusterify FastAPI Application
+   After=network.target
+
+   [Service]
+   User=<your_username>
+   Group=<your_groupname>
+   WorkingDirectory=/opt/clusterify
+   ExecStart=/opt/clusterify/env/bin/uvicorn clusterify:app --host 0.0.0.0 --port 8000 --workers 4
+   Restart=always
+
+   [Install]
+   WantedBy=multi-user.target
+   ```
+
+   Replace `<your_username>` and `<your_groupname>` with your actual username and group name.
+
+3. Save the file and exit the text editor.
+
+4. Enable the service to start on boot:
+   ```
+   sudo systemctl enable clusterify.service
+   ```
+
+5. Start the service:
+   ```
+   sudo systemctl start clusterify.service
+   ```
+
+Now, your application should be deployed and running as a systemd service. It will automatically start on boot and restart if it crashes.
+
+## Information 📢
 
 -   K-means is a clustering algorithm that tries to partition a set of points into K sets (clusters) such that the points in each cluster tend to be near each other. 
 It is unsupervised because the points have no external classification.
