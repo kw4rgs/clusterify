@@ -57,7 +57,47 @@ Additionally, if you plan to deploy Clusterify on a server or in a production en
 
 ## Instructions
 
-1) You must "sudo apt-get install build-essential", cause K-means-constrained need it
+I will use "ubuntu" for practical purposes..
+
+TO DEPLOY AND INSTALL: 
+
+1) sudo update
+2) sudo upgrade
+3) sudo apt install python3-venv
+4) cd /opt
+5) git glone https://github.com/cristianzzzz/clusterify.git
+6) cd /opt/clusterify
+7) python3 -m venv env
+8) source env/bin/activate
+9) sudo apt-get install build-essential (cause K-means-constrained need it)
+10) sudo apt-get install python3-dev (cause K-means-constrained need it)
+11) pip install -r requirements.txt
+12) test it with "uvicorn clusterify:app --host 0.0.0.0 --port 8000 --workers 4"
+
+tip: to deactivate the env, just type "deactivate"
+
+TO MAKE IT RECURSIVE:
+1) sudo nano /etc/systemd/system/clusterify.service
+2) paste this:
+
+[Unit]
+Description=clusterify
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/clusterify
+ExecStart=/opt/clusterify/env/bin/uvicorn clusterify:app --host 0.0.0.0 --port 8000 --workers 4 --access-log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+3) sudo systemctl daemon-reload
+4) sudo systemctl start clusterify
+5) sudo systemctl status clusterify
+6) sudo systemctl enable clusterify
+7) sudo journalctl -u clusterify.service
 
 ## Information
 
