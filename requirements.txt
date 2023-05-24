@@ -1,0 +1,15 @@
+uvicorn
+fastapi
+pandas
+numpy
+python3-dev
+scikit-learn
+k-means-constrained
+<<<<<<< HEAD
+python-dotenv
+pydantic
+
+
+# you should install python3-dev: sudo apt-get install python3-dev before k-means-constained
+=======
+>>>>>>> e2c8f1eccc78327da155b8c744e4f51100ffe29b

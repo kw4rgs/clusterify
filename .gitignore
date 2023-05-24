@@ -1,0 +1,5 @@
+geo_clientes.json
+__pycache__/*
+model_trained.pkl
+env
+.env
