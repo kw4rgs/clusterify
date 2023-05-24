@@ -1,4 +1,5 @@
 
+
 ![Clusterify_Logo](https://github.com/cristianzzzz/clusterify/blob/adc0167c2edc95ee3427b3b6ffa8a38930afb23f/logo.png)
 
 
@@ -63,6 +64,54 @@ Any additional libraries or packages required for your specific data preprocessi
 -   It's worth noting that specific version requirements for Python, FastAPI, Pandas, Numpy, Scikit-learn, and other dependencies may vary. It's always recommended to refer to the documentation of each library for the latest version compatibility information.
 
 Additionally, if you plan to deploy Clusterify on a server or in a production environment, you may need to consider additional requirements such as hosting infrastructure, security measures, and scalability considerations.
+
+## Documentation 📚
+
+**FastAPI doc**
+
+All the necessary documentation will be available through the URL: 
+
+    
+
+> server ip:port/docs
+
+or 
+
+> server ip:port/redoc
+
+**Endpoints**
+
+1) Health Check:
+
+This endpoint is used to check the health status of the server.
+
+>    - Endpoint: /Check Health
+>    - HTTP Method: GET
+
+
+2) Cluster Centroids:
+
+This endpoint retrieves the cluster centroids, these represent the central points or prototypes of each cluster. This endpoint allows you to fetch the coordinates or attributes of these centroids.
+
+>    - Endpoint: /api/v1/cluster_centers
+>    - HTTP Method: GET
+
+3) Cluster Information:
+ 
+This endpoint provides information about the clustered data. It retrieves the data points that have been assigned to specific clusters. 
+
+>    - Endpoint: /api/v1/clustered_data
+>    - HTTP Method: GET
+
+
+4) Classify Customers:
+
+This endpoint is used to classify customers. It accepts a POST request and typically requires providing customer data as input. Clusterify will process the data and classify customers based on predefined criteria or machine learning models. The response will contain the classification results, such as the predicted customer segments or labels. It can be an object or a list of objects.
+
+>    - Endpoint: /api/v1/classify_customers
+>    - HTTP Method: POST
+>    - Body:
+>    [{ "customer_code": int, "lat": float, "lon": float}]
 
 ## Instructions 🚀
 
