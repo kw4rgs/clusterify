@@ -28,6 +28,14 @@ Experience the future of data clustering with Clusterify. Unlock hidden potentia
 -   Revolutionize the way data is analyzed and understood, transforming it into a powerful tool for gaining a competitive edge.
 -   Redefine the boundaries of what's possible in data clustering, pushing the limits of technology to unleash the full potential of your data.
 
+## Information 📢
+
+-   K-means is a clustering algorithm that tries to partition a set of points into K sets (clusters) such that the points in each cluster tend to be near each other. 
+It is unsupervised because the points have no external classification.
+
+-   K-nearest neighbors is a classification (or regression) algorithm that in order to determine the classification of a point, combines the classification of the K nearest points. 
+It is supervised because you are trying to classify a point based on the known classification of other points.
+
 ## Requirements 📝
 
 **Hardware Requirements:**
@@ -161,11 +169,3 @@ To make the deployment process recursive, follow these additional steps:
    ```
 
 Now, your application should be deployed and running as a systemd service. It will automatically start on boot and restart if it crashes.
-
-## Information 📢
-
--   K-means is a clustering algorithm that tries to partition a set of points into K sets (clusters) such that the points in each cluster tend to be near each other. 
-It is unsupervised because the points have no external classification.
-
--   K-nearest neighbors is a classification (or regression) algorithm that in order to determine the classification of a point, combines the classification of the K nearest points. 
-It is supervised because you are trying to classify a point based on the known classification of other points.
