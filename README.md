@@ -37,10 +37,10 @@ Experience the future of data clustering with Clusterify. Unlock hidden potentia
 ## Information 📢
 
 -   K-means is a clustering algorithm that tries to partition a set of points into K sets (clusters) such that the points in each cluster tend to be near each other. 
-It is unsupervised because the points have no external classification.
+It is unsupervised because the points have no external classification, which means that it does not require training data.
 
 -   K-nearest neighbors is a classification (or regression) algorithm that in order to determine the classification of a point, combines the classification of the K nearest points. 
-It is supervised because you are trying to classify a point based on the known classification of other points.
+It is supervised because you are trying to classify a point based on the known classification of other points (it does require training data or a trained model).
 
 ## Requirements 📝
 
