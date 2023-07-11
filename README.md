@@ -2,8 +2,23 @@
 
 ![Clusterify_Logo](https://github.com/cristianzzzz/clusterify/blob/adc0167c2edc95ee3427b3b6ffa8a38930afb23f/logo.png)
 
+<h1 align="center">
+  <br>
+  CLUSTERIFY
+  <br>
+</h1>
 
-# CLUSTERIFY
+<h4 align="center">A clustering and classification app built on top of <a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a>.</h4>
+
+
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#information">Information</a> •
+  <a href="#documentation">Documentation</a> •
+  <a href="#how-to-use">How To Use</a> 
+</p>
+
+## About 📕
 
 *"Uncover data patterns and relationships through clustering methods."*
 
@@ -21,7 +36,7 @@ With the flexibility and extensibility of Python, Clusterify seamlessly integrat
 
 Experience the future of data clustering with Clusterify. Unlock hidden potential, streamline decision-making, and gain a competitive edge in the ever-evolving field of data analysis. With Clusterify, your data becomes a gateway to deeper insights, revolutionizing the way you understand and leverage your information.
 
-## Features 💪
+## Key Features 💪
 
 -   Efficiently cluster and organize data points for improved data analysis and decision-making.
 -   Utilize K-means algorithm to partition data into cohesive groups and identify patterns and similarities within the dataset.
@@ -60,6 +75,27 @@ Any additional libraries or packages required for your specific data preprocessi
 **Data Requirements:**
 
 -   Prepare your data in a compatible format (e.g., CSV, JSON, or other structured formats) suitable for input into Clusterify.
+-   You should have a trained model in format .pkl , and a "geo_clientes.json" with the following format:
+  > {
+	"total": 123456,
+	"clientes": [
+		{
+			"cliente": {
+				"codigo": 1,
+				"geolocalizacion": {
+					"latitud": "-11.915405",
+					"longitud": "-11.737398",
+					"fecha_creacion": "2021-11-23 12:32:17"
+				},
+				"ip": "1.1.1.1",
+				"plan": "60MBPS",
+				"nodo": "NODO FTTH",
+				"tecnologia": "FTTH"
+			}
+		},
+    {..},
+	]
+}
 -   Ensure the data points are appropriately formatted, with features or attributes that capture the relevant information for clustering.
 -   It's worth noting that specific version requirements for Python, FastAPI, Pandas, Numpy, Scikit-learn, and other dependencies may vary. It's always recommended to refer to the documentation of each library for the latest version compatibility information.
 
@@ -67,17 +103,21 @@ Additionally, if you plan to deploy Clusterify on a server or in a production en
 
 ## Documentation 📚
 
-**FastAPI doc**
-
 All the necessary documentation will be available through the URL: 
 
-    
+**FastAPI doc**
 
 > server ip:port/docs
 
+![Clusterify_docs](https://github.com/kw4rgs/clusterify/blob/34c68744dd123801f83723508e4e44f54ca2e968/clusterify_docs.png)
+  
 or 
 
+**Redocs doc**
+
 > server ip:port/redoc
+
+![Clusterify_redocs](https://github.com/kw4rgs/clusterify/blob/cd533861983c4c0e7122bfacba6551fdebdc6d19/redocs_clusterify.png)
 
 **Endpoints**
 
@@ -113,7 +153,7 @@ This endpoint is used to classify customers. It accepts a POST request and typic
 >    - Body:
 >    [{ "customer_code": int, "lat": float, "lon": float}]
 
-## Instructions 🚀
+## How To Use 🚀
 
 > I will use "ubuntu" for practical purposes..
 
