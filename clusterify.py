@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 from fastapi import FastAPI, Request, HTTPException, status, Body
 from sklearn.neighbors import NearestNeighbors
+from sklearn.cluster import DBSCAN
 from fastapi.responses import JSONResponse
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
@@ -15,6 +16,10 @@ from typing import List
 import subprocess
 from dotenv import load_dotenv
 import os
+import joblib
+
+from collections import Counter
+
 
 ### D O C U M E N T A T I O N ###
 
@@ -89,7 +94,7 @@ neigh = NearestNeighbors(n_neighbors=1)
 neigh.fit(loaded_model.cluster_centers_)
 
 # Define a route to check the health of the server
-@app.get("/",  tags=["Health Check"])
+@app.get("/api/v1/health-check",  tags=["Health Check"])
 async def check_health():
     
     env = os.getenv("ENVIRONMENT")
@@ -116,7 +121,7 @@ async def check_health():
     }
 
 # Get the current centroids and model clusterized information to work with
-@app.get("/api/v1/cluster_centers", tags=["Cluster Centroids"])
+@app.get("/api/v1/cluster-centers", tags=["Cluster Centroids"])
 def get_cluster_centers():
     try:
         # Get the cluster centers and their indices
@@ -138,7 +143,7 @@ def get_cluster_centers():
         raise HTTPException(status_code=500, detail="Error occurred while retrieving cluster centers")
 
 # Get the current model data with the customers
-@app.get("/api/v1/clustered_data", tags=["Cluster Information"])
+@app.get("/api/v1/clustered-data", tags=["Cluster Information"])
 def get_clustered_data():
     try:
         # Load JSON data from the file
@@ -173,6 +178,9 @@ def get_clustered_data():
         train_df['cluster'] = pd.Series(loaded_model.predict(train_df), index=train_df.index)
         train_df['codigo_cliente'] = df['codigo_cliente']
 
+        # Count the number of samples in each cluster
+        cluster_samples = train_df['cluster'].value_counts().to_dict()  
+        
         # Convert clustered data to JSON
         clustered_data = train_df.to_dict(orient='records')
         
@@ -197,6 +205,7 @@ def get_clustered_data():
             else:
                 clusters[cluster] = {
                     'cluster': cluster,
+                    'customers_qty': cluster_samples.get(cluster, 0),  # Number of customers in this cluster
                     'customers': [{
                         'customer_code': customer_code,
                         'coordinates': {
@@ -208,7 +217,7 @@ def get_clustered_data():
 
         # Create the final data dictionary
         cluster_set = {'cluster_set': list(clusters.values())}
-        
+
         sorted_data = sorted(cluster_set['cluster_set'], key=lambda x: x["cluster"])
         cluster_set["cluster_set"] = sorted_data
         return cluster_set
@@ -222,7 +231,7 @@ def get_clustered_data():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/api/v1/classify_customers", tags=["Classify Customers"])
+@app.post("/api/v1/classify-customers", tags=["Classify Customers"])
 async def classify_customers(request: Request, body: List[CustomerData] = Body(...)):
     """
     Nearest neighbor classification model to classify customers.
@@ -310,7 +319,7 @@ async def classify_customers(request: Request, body: List[CustomerData] = Body(.
     except json.JSONDecodeError:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid JSON payload")
 
-
+    
 # If this file is executed directly, start the server with Uvicorn
 if __name__ == "__main__":
     uvicorn.run("clusterify:app", host="127.0.0.1", port=6969, reload=True, workers=4)
