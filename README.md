@@ -1,6 +1,6 @@
 
 
-![Clusterify_Logo](https://github.com/cristianzzzz/clusterify/blob/adc0167c2edc95ee3427b3b6ffa8a38930afb23f/logo.png)
+![Clusterify_Logo](https://github.com/kw4rgs/clusterify/blob/adc0167c2edc95ee3427b3b6ffa8a38930afb23f/logo.png)
 
 
 # CLUSTERIFY
