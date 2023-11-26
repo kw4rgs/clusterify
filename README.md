@@ -184,7 +184,7 @@ To deploy and install your project, you can follow these instructions:
 
 Tip: To deactivate the virtual environment, simply type `deactivate` in the terminal.
 
-To deploy as web service, follow these additional steps:
+To deploy as a web service, follow these additional steps:
 
 1. Open the systemd service configuration file in a text editor:
    ```
@@ -222,4 +222,4 @@ To deploy as web service, follow these additional steps:
    sudo systemctl start clusterify.service
    ```
 
-Now, your application should be deployed and running as a systemd service. It will automatically start on boot and restart if it crashes.
+Now, your application has been deployed and should run as a systemd service. It will automatically start on boot and restart if it crashes.
