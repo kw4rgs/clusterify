@@ -184,7 +184,7 @@ To deploy and install your project, you can follow these instructions:
 
 Tip: To deactivate the virtual environment, simply type `deactivate` in the terminal.
 
-To make the deployment process recursive, follow these additional steps:
+To deploy as web service, follow these additional steps:
 
 1. Open the systemd service configuration file in a text editor:
    ```
